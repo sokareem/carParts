@@ -10,6 +10,7 @@
 		DC4F92702A6B95F300B808BE /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F926F2A6B95F300B808BE /* LocationView.swift */; };
 		DC4F92722A6B967000B808BE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F92712A6B967000B808BE /* MapView.swift */; };
 		DC4F92742A6B979000B808BE /* LocationTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4F92732A6B979000B808BE /* LocationTabView.swift */; };
+		DC5ED2CF2A95BBD600C0E4B0 /* InventoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5ED2CE2A95BBD600C0E4B0 /* InventoryModel.swift */; };
 		DCAC32BB2A5B849A00430148 /* CarPartsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC32BA2A5B849A00430148 /* CarPartsApp.swift */; };
 		DCAC32BD2A5B849A00430148 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC32BC2A5B849A00430148 /* ContentView.swift */; };
 		DCAC32BF2A5B849E00430148 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCAC32BE2A5B849E00430148 /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 		DC4F926F2A6B95F300B808BE /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		DC4F92712A6B967000B808BE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		DC4F92732A6B979000B808BE /* LocationTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTabView.swift; sourceTree = "<group>"; };
+		DC5ED2CE2A95BBD600C0E4B0 /* InventoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryModel.swift; sourceTree = "<group>"; };
 		DCAC32B72A5B849A00430148 /* CarParts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarParts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCAC32BA2A5B849A00430148 /* CarPartsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPartsApp.swift; sourceTree = "<group>"; };
 		DCAC32BC2A5B849A00430148 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC5ED2CD2A95BB9D00C0E4B0 /* InventoryModel */ = {
+			isa = PBXGroup;
+			children = (
+				DC5ED2CE2A95BBD600C0E4B0 /* InventoryModel.swift */,
+			);
+			path = InventoryModel;
+			sourceTree = "<group>";
+		};
 		DCAC32AE2A5B849900430148 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +113,7 @@
 		DCAC32B92A5B849A00430148 /* CarParts */ = {
 			isa = PBXGroup;
 			children = (
+				DC5ED2CD2A95BB9D00C0E4B0 /* InventoryModel */,
 				DCAC32BA2A5B849A00430148 /* CarPartsApp.swift */,
 				DCAC32BC2A5B849A00430148 /* ContentView.swift */,
 				DCAC32E52A5B8FE200430148 /* DashboardView.swift */,
@@ -277,6 +288,7 @@
 				DCAC32E62A5B8FE200430148 /* DashboardView.swift in Sources */,
 				DCAC32BB2A5B849A00430148 /* CarPartsApp.swift in Sources */,
 				DC4F92742A6B979000B808BE /* LocationTabView.swift in Sources */,
+				DC5ED2CF2A95BBD600C0E4B0 /* InventoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

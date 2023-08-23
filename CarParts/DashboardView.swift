@@ -10,6 +10,7 @@ import Combine
 
 struct DashboardView: View {
     @Environment(\.presentationMode) var presentationMode
+
     // Add search text state
     @State private var searchText = ""
     @State private var selectedMenuOption: String? = nil // Track the selected menu option
@@ -106,8 +107,43 @@ struct DashboardView: View {
         // You might use URLSession, Alamofire, or other networking libraries to perform the request.
         // For simplicity, let's assume the API response is an array of strings.
         // Replace YourAPIModel with your actual model representing the API response if needed.
-        let apiResponse: [String] = ["Apple", "Banana", "Cherry", "Durian"]
-        return apiResponse.filter { $0.contains(searchText) }
-            
+        
+        // Create an instance of CarRepairInventory
+        let repairInventory = CarRepairInventory()
+
+        // Define car models
+        let toyotaCamry = Car(make: "Toyota", model: "Camry", year: 2023)
+        let hondaCivic = Car(make: "Honda", model: "Civic", year: 2023)
+        
+        // Define inventory items
+        let camryInventory: [InventoryItem] = [
+            InventoryItem(partName: "Brake Pads", partDescription: "High-quality brake pads", price: 50.0, quantityInStock: 100),
+            // Add more inventory items for Camry
+        ]
+
+        let civicInventory: [InventoryItem] = [
+            InventoryItem(partName: "Oil Filter", partDescription: "Premium oil filter", price: 10.0, quantityInStock: 150),
+            // Add more inventory items for Civic
+        ]
+        
+        // Add inventory items for cars
+        repairInventory.addInventory(for: toyotaCamry, items: camryInventory)
+        repairInventory.addInventory(for: hondaCivic, items: civicInventory)
+        
+
+        // Retrieve and print inventory for a specific car
+        if let camryInventory = repairInventory.getInventory(for: toyotaCamry) {
+            for item in camryInventory {
+                print("Part: \(item.partName), Price: \(item.price), Stock: \(item.quantityInStock)")
+            }
+        }
+        
+        let carMakes = repairInventory.carInventory.keys.map { $0.make }
+        print("Car Makes: \(carMakes)")
+        
+        let filteredCarMakes = carMakes.filter { $0.contains(searchText) }
+        print("Filtered Car Makes: \(filteredCarMakes)")
+
+        return filteredCarMakes
     }
 }
