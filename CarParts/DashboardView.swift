@@ -109,37 +109,44 @@ struct DashboardView: View {
         // Replace YourAPIModel with your actual model representing the API response if needed.
         
         // Create an instance of CarRepairInventory
-        let repairInventory = CarRepairInventory()
-
+        var repairInventory : [Car] = []
+       
         // Define car models
-        let toyotaCamry = Car(make: "Toyota", model: "Camry", year: 2023)
-        let hondaCivic = Car(make: "Honda", model: "Civic", year: 2023)
+        var toyotaCamry = Car(make: "Toyota", model: "Camry", year: 2023)
+        var hondaCivic = Car(make: "Honda", model: "Civic", year: 2023)
+        var hyundaiElantra = Car(make:"Hyundai", model: "Elantra", year: 2023)
         
         // Define inventory items
-        let camryInventory: [InventoryItem] = [
-            InventoryItem(partName: "Brake Pads", partDescription: "High-quality brake pads", price: 50.0, quantityInStock: 100),
-            // Add more inventory items for Camry
-        ]
+   
+        var brakePads: InventoryItem =  InventoryItem(partName: "Brake Pads", partDescription: "High-quality brake pads", price: 50.0, quantityInStock: 100)
+        var oilFilter: InventoryItem = InventoryItem(partName: "Oil Filter", partDescription: "Premium oil filter", price: 10.0, quantityInStock: 150)
+        // Add more inventory items for Camry
 
-        let civicInventory: [InventoryItem] = [
-            InventoryItem(partName: "Oil Filter", partDescription: "Premium oil filter", price: 10.0, quantityInStock: 150),
-            // Add more inventory items for Civic
-        ]
-        
+          
         // Add inventory items for cars
-        repairInventory.addInventory(for: toyotaCamry, items: camryInventory)
-        repairInventory.addInventory(for: hondaCivic, items: civicInventory)
+        toyotaCamry.addInventory(for: &toyotaCamry, with: brakePads)
+        toyotaCamry.addInventory(for: &toyotaCamry, with: oilFilter)
+        hyundaiElantra.addInventory(for: &hyundaiElantra, with: oilFilter)
+        hyundaiElantra.addInventory(for: &hyundaiElantra, with: brakePads)
         
-
+        repairInventory.append(toyotaCamry)
+        repairInventory.append(hyundaiElantra)
         // Retrieve and print inventory for a specific car
-        if let camryInventory = repairInventory.getInventory(for: toyotaCamry) {
-            for item in camryInventory {
-                print("Part: \(item.partName), Price: \(item.price), Stock: \(item.quantityInStock)")
+
+        var carMakes: [String] = []
+        // Print out your whole car inventory structure
+        for car in repairInventory{
+            print("Car Make:  \(car.make), Model: \(car.model), Year:  \(car.year)")
+            carMakes.append(car.make)
+            for  item in car.inventoryItems{
+                print("---------Part: \(item.partName), Price: \(item.price), Stock: \(item.quantityInStock)--------")
             }
         }
-        
-        let carMakes = repairInventory.carInventory.keys.map { $0.make }
-        print("Car Makes: \(carMakes)")
+            
+        if searchText.isEmpty{
+            print("Car Makes: \(carMakes)")
+            return carMakes
+        }
         
         let filteredCarMakes = carMakes.filter { $0.contains(searchText) }
         print("Filtered Car Makes: \(filteredCarMakes)")
